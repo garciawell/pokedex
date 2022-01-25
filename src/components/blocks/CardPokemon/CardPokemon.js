@@ -1,15 +1,14 @@
-import React, { useCallback } from 'react';
-import { IPokeModel, IPokeTypes } from 'store/modules/pokemons/models';
-import { Creators as PokemonsActions } from 'store/modules/pokemons/actions';
-import { Creators as SharedActions } from 'store/modules/shared/actions';
+/* eslint-disable react/jsx-no-useless-fragment */
 import Skeleton from '@material-ui/lab/Skeleton';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { formatTextToCapitalize, padDigits } from 'utils/tools';
-import { Wrapper, Title, NumberStyled } from './styles';
+import { Creators as SharedActions } from '../../../store/modules/shared/actions';
+import { formatTextToCapitalize, padDigits } from '../../../utils/tools';
+import { Creators as PokemonsActions } from '../../../store/modules/pokemons/actions';
 import TypesPokemon from '../TypesPokemon';
+import { NumberStyled, Title, Wrapper } from './styles';
 
-
-const CardPokemon = ({ data, loading }) => {
+function CardPokemon({ data, loading }) {
   const dispatch = useDispatch();
 
   function getPrimaryColor(values) {
@@ -61,6 +60,6 @@ const CardPokemon = ({ data, loading }) => {
       </div>
     </Wrapper>
   );
-};
+}
 
 export default React.memo(CardPokemon);

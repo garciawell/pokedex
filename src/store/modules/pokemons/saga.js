@@ -1,11 +1,11 @@
-import { all, call, delay, put, takeLatest } from 'redux-saga/effects';
+import {
+  all, call, delay, put, takeLatest,
+} from 'redux-saga/effects';
 import api from '../../../services/api';
 import { PokeActionTypes } from './actions';
 
-
-
 export function* getPokes(action) {
-  const sumOffsetLimit = (action?.payload - 1) * 20;
+  const sumOffsetLimit = (Number(action?.payload) - 1) * 20;
 
   try {
     const { data } = yield call(api.get, `/pokemon?offset=${sumOffsetLimit}`);

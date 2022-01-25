@@ -1,5 +1,4 @@
-
-const PokeActionTypes =  {
+export const PokeActionTypes = {
   GET_POKE: 'pokemon/GET_POKE',
   GET_POKE_SUCCESS: 'pokemon/GET_POKE_SUCCESS',
   GET_POKE_FAILURE: 'pokemon/GET_POKE_FAILURE',
@@ -9,8 +8,7 @@ const PokeActionTypes =  {
   SEARCH_POKE_FAILURE: 'pokemon/SEARCH_POKE_FAILURE',
 
   GET_POKE_INF: 'pokemon/GET_POKE_INF',
-}
-
+};
 
 export const Creators = {
   getPokes(value) {

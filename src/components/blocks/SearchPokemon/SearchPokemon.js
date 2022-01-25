@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { Formik } from 'formik';
 // import * as Yup from 'yup';
-import { Input } from 'components/elements';
 import { useDispatch } from 'react-redux';
-import { Creators as PokemonActions } from 'store/modules/pokemons/actions';
+import { Creators as PokemonActions } from '../../../store/modules/pokemons/actions';
+import { Input } from '../../elements';
 
-const SearchPokemon = () => {
+function SearchPokemon() {
   const dispatch = useDispatch();
   const [time, setTime] = useState(null);
 
@@ -75,6 +75,6 @@ const SearchPokemon = () => {
       )}
     </Formik>
   );
-};
+}
 
 export default SearchPokemon;

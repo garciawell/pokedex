@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { mockListPokemons } from 'utils/tools';
+import { mockListPokemons } from '../../../utils/tools';
 import { PokeActionTypes } from './actions';
 import { ApiStatus } from './models';
 
@@ -56,10 +56,9 @@ export default function pokemonsReducer(
         break;
 
       case PokeActionTypes.GET_POKE_INF:
-        draft.currentPokemon =
-          action.payload.id === 'CLEAR'
-            ? {}
-            : draft.pokes.find((item) => item.id === action.payload.id);
+        draft.currentPokemon = action.payload.id === 'CLEAR'
+          ? {}
+          : draft.pokes.find((item) => item.id === action.payload.id);
         break;
       default:
     }
