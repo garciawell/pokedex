@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
-
+import { IPokeTypes } from 'store/modules/pokemons/models';
 import { darken } from 'polished';
+
+export interface ILabelProps {
+  color?: IPokeTypes['type']['name'];
+}
 
 export const bgType = {
   grass: css`
@@ -59,7 +63,7 @@ export const bgType = {
   `,
 };
 
-export const Label = styled.span`
+export const Label = styled.span<ILabelProps>`
   font-size: 14px;
   padding: 5px;
   ${(props) => bgType[props.color || 'rock']}

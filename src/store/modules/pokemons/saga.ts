@@ -1,11 +1,12 @@
-import {
-  all, call, delay, put, takeLatest,
-} from 'redux-saga/effects';
-import api from '../../../services/api';
-import { PokeActionTypes } from './actions';
+import { call, takeLatest, put, all, delay } from 'redux-saga/effects';
 
-export function* getPokes(action) {
-  const sumOffsetLimit = (Number(action?.payload) - 1) * 20;
+import api from '../../../services/api';
+
+import { PokeActionTypes } from './actions';
+import { IPokeModel } from './models';
+
+export function* getPokes(action: any) {
+  const sumOffsetLimit = (action?.payload - 1) * 20;
 
   try {
     const { data } = yield call(api.get, `/pokemon?offset=${sumOffsetLimit}`);
@@ -13,10 +14,10 @@ export function* getPokes(action) {
     yield delay(1000);
 
     const responses = yield all(
-      data.results.map((item) => call(api.get, item.url)),
+      data.results.map((item: IPokeModel) => call(api.get, item.url)),
     );
 
-    const getOnlyData = responses.map((item) => ({
+    const getOnlyData = responses.map((item: any) => ({
       id: item.data.id,
       name: item.data.name,
       img: item.data.sprites.front_default,
@@ -36,7 +37,7 @@ export function* getPokes(action) {
   }
 }
 
-export function* searchPokes(action) {
+export function* searchPokes(action: any) {
   try {
     const { data } = yield call(api.get, `/pokemon/${action?.payload}`);
     yield delay(1000);

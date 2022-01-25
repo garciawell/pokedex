@@ -1,9 +1,20 @@
 import produce from 'immer';
-import { mockListPokemons } from '../../../utils/tools';
-import { PokeActionTypes } from './actions';
-import { ApiStatus } from './models';
+import { mockListPokemons } from 'utils/tools';
+import { ApiStatus, IPokeModel, IPokeStats, IPokeAbilities } from './models';
+import { IPokeAction, PokeActionTypes } from './actions';
 
-export const INITIAL_STATE_POKE = {
+export interface IPokemonState {
+  loadingStatus: ApiStatus;
+  pokes: IPokeModel[];
+  pages: number;
+  isSearchFilled: boolean;
+  error: string;
+  stats: IPokeStats[];
+  abilities: IPokeAbilities[];
+  currentPokemon: any;
+}
+
+export const INITIAL_STATE_POKE: IPokemonState = {
   loadingStatus: ApiStatus.LOADING,
   pokes: mockListPokemons(),
   pages: 0,
@@ -15,8 +26,8 @@ export const INITIAL_STATE_POKE = {
 };
 
 export default function pokemonsReducer(
-  state = INITIAL_STATE_POKE,
-  action,
+  state: IPokemonState = INITIAL_STATE_POKE,
+  action: IPokeAction,
 ) {
   return produce(state, (draft) => {
     switch (action.type) {
@@ -56,9 +67,10 @@ export default function pokemonsReducer(
         break;
 
       case PokeActionTypes.GET_POKE_INF:
-        draft.currentPokemon = action.payload.id === 'CLEAR'
-          ? {}
-          : draft.pokes.find((item) => item.id === action.payload.id);
+        draft.currentPokemon =
+          action.payload.id === 'CLEAR'
+            ? {}
+            : draft.pokes.find((item) => item.id === action.payload.id);
         break;
       default:
     }

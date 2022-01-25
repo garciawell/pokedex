@@ -1,17 +1,22 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-import Skeleton from '@material-ui/lab/Skeleton';
 import React, { useCallback } from 'react';
+import { IPokeModel, IPokeTypes } from 'store/modules/pokemons/models';
+import { Creators as PokemonsActions } from 'store/modules/pokemons/actions';
+import { Creators as SharedActions } from 'store/modules/shared/actions';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { useDispatch } from 'react-redux';
-import { Creators as SharedActions } from '../../../store/modules/shared/actions';
-import { formatTextToCapitalize, padDigits } from '../../../utils/tools';
-import { Creators as PokemonsActions } from '../../../store/modules/pokemons/actions';
+import { formatTextToCapitalize, padDigits } from 'utils/tools';
+import { Wrapper, Title, NumberStyled } from './styles';
 import TypesPokemon from '../TypesPokemon';
-import { NumberStyled, Title, Wrapper } from './styles';
 
-function CardPokemon({ data, loading }) {
+interface ICardProps {
+  data: IPokeModel;
+  loading: string;
+}
+
+const CardPokemon: React.FC<ICardProps> = ({ data, loading }) => {
   const dispatch = useDispatch();
 
-  function getPrimaryColor(values) {
+  function getPrimaryColor(values: IPokeTypes[]): any {
     const getPrimaryNameType = values.find((v) => v.slot === 1)?.type.name;
 
     return getPrimaryNameType;
@@ -60,6 +65,6 @@ function CardPokemon({ data, loading }) {
       </div>
     </Wrapper>
   );
-}
+};
 
 export default React.memo(CardPokemon);

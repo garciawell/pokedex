@@ -1,11 +1,13 @@
-import { Box, Grid } from '@material-ui/core';
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Creators as SharedActions } from '../../store/modules/shared/actions';
-import { Creators as PokeActions } from '../../store/modules/pokemons/actions';
-import { ModalDetailPokemon, SearchPokemon } from '../../components/blocks';
-import CardPokemon from '../../components/blocks/CardPokemon';
-import { Modal } from '../../components/elements';
+import { Creators as PokeActions } from 'store/modules/pokemons/actions';
+import { Creators as SharedActions } from 'store/modules/shared/actions';
+import { IState } from 'store/combineReducers';
+import { IPokeModel } from 'store/modules/pokemons/models';
+import { SearchPokemon, ModalDetailPokemon } from 'components/blocks';
+import { Modal } from 'components/elements';
+import CardPokemon from 'components/blocks/CardPokemon';
+import { Grid, Box } from '@material-ui/core';
 import {
   Box as BoxStyled,
   Container,
@@ -15,27 +17,27 @@ import {
   WrapperBg,
 } from './styles';
 
-function Dashboard() {
-  const pokes = useSelector(
+const Dashboard: React.FC = () => {
+  const pokes = useSelector<IState, IPokeModel[]>(
     (state) => state.pokemons.pokes,
   );
 
-  const statusModal = useSelector(
+  const statusModal = useSelector<IState, boolean>(
     (state) => state.shared.modal,
   );
-  const pagination = useSelector(
+  const pagination = useSelector<IState, number>(
     (state) => state.pokemons.pages,
   );
 
-  const loading = useSelector(
+  const loading = useSelector<IState, string>(
     (state) => state.pokemons.loadingStatus,
   );
 
-  const isSearchFilled = useSelector(
+  const isSearchFilled = useSelector<IState, boolean>(
     (state) => state.pokemons.isSearchFilled,
   );
 
-  const notFoundItems = useSelector(
+  const notFoundItems = useSelector<IState, string>(
     (state) => state.pokemons.error,
   );
 
@@ -50,8 +52,8 @@ function Dashboard() {
   }, [actionGetPokes]);
 
   const handlePagination = (
-    event,
-    value,
+    event: React.ChangeEvent<unknown>,
+    value: number,
   ) => {
     dispatch(PokeActions.getPokes(value));
   };
@@ -102,6 +104,6 @@ function Dashboard() {
       </Modal>
     </>
   );
-}
+};
 
 export default Dashboard;

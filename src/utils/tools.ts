@@ -1,8 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
+import { uuid } from 'uuidv4';
 
 export function mockListPokemons() {
   return Array.from({ length: 20 }, () => ({
-    id: uuidv4(),
+    id: uuid(),
     name: 'Pokemon',
     url: 'url',
     img: 'img',
@@ -12,7 +12,7 @@ export function mockListPokemons() {
   }));
 }
 
-export function formatTextToCapitalize(value) {
+export function formatTextToCapitalize(value: string) {
   const text = value
     .toLocaleLowerCase()
     .split(' ')
@@ -22,7 +22,7 @@ export function formatTextToCapitalize(value) {
   return text;
 }
 
-export function formatTextToCapitalizeWithTrace(value) {
+export function formatTextToCapitalizeWithTrace(value: string) {
   const text = value
     .toLocaleLowerCase()
     .split('-')
@@ -32,14 +32,16 @@ export function formatTextToCapitalizeWithTrace(value) {
   return text;
 }
 
-export function padDigits(number) {
+export function padDigits(number: number | string) {
   if (Number(number) <= 99) {
     number = `00${number}`.slice(-3);
   }
   return number;
 }
 
-export function sumValues(val) {
-  const sumItems = val.reduce((acc, curr) => acc + curr, 0);
+export function sumValues(val: number[]) {
+  const sumItems = val.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0);
   return sumItems;
 }

@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { Formik } from 'formik';
 // import * as Yup from 'yup';
+import { Input } from 'components/elements';
 import { useDispatch } from 'react-redux';
-import { Creators as PokemonActions } from '../../../store/modules/pokemons/actions';
-import { Input } from '../../elements';
+import { Creators as PokemonActions } from 'store/modules/pokemons/actions';
 
-function SearchPokemon() {
+const SearchPokemon: React.FC = () => {
   const dispatch = useDispatch();
-  const [time, setTime] = useState(null);
+  const [time, setTime] = useState<number | null>(null);
 
   const handleSubmitForm = useCallback(
     (value) => {
@@ -75,6 +75,6 @@ function SearchPokemon() {
       )}
     </Formik>
   );
-}
+};
 
 export default SearchPokemon;

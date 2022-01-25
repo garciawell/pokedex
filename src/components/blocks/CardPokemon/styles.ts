@@ -1,6 +1,23 @@
 import styled, { css } from 'styled-components';
-import { Text } from '../../elements';
-import waterMarkPokeball from '../../../assets/img/watermark-pokeball.svg';
+import waterMarkPokeball from 'assets/img/watermark-pokeball.svg';
+import { Text } from 'components/elements';
+
+export interface IWrapperProps {
+  color?:
+    | 'grass'
+    | 'fire'
+    | 'water'
+    | 'bug'
+    | 'normal'
+    | 'poison'
+    | 'electric'
+    | 'ground'
+    | 'fairy'
+    | 'fighting'
+    | 'flying'
+    | 'rock';
+  loading: string;
+}
 
 export const bgType = {
   grass: css`
@@ -59,12 +76,13 @@ export const bgType = {
   `,
 };
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<IWrapperProps>`
   border-radius: 15px;
   padding: 15px;
   height: 130px;
-  ${(props) => props.loading !== 'loading'
-    && css`
+  ${(props) =>
+    props.loading !== 'loading' &&
+    css`
       background: url(${waterMarkPokeball}) right center no-repeat;
     `}
 

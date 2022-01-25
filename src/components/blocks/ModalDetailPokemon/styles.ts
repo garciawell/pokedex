@@ -1,13 +1,28 @@
-import { Grid } from '@material-ui/core';
 import styled, { css } from 'styled-components';
-import WatermarkLarge from '../../../assets/img/watermark-pokeball-large.svg';
-import { Text } from '../../elements';
-import { bgType as bg } from '../CardPokemon/styles';
+import { Text } from 'components/elements';
+import { Grid } from '@material-ui/core';
+import WatermarkLarge from 'assets/img/watermark-pokeball-large.svg';
+import { bgType as bg, IWrapperProps } from '../CardPokemon/styles';
 import { bgType } from '../TypesPokemon/styles';
+
+interface ILeftProps {
+  color?: IWrapperProps['color'];
+}
+interface ITitleProps {
+  white?: boolean;
+}
+
+interface IAbilityProps {
+  color?: IWrapperProps['color'];
+}
 
 export const Container = styled(Grid)`
   height: 100%;
 `;
+
+interface IBarProps {
+  size: number;
+}
 
 export const List = styled.ul`
   margin-top: 35px;
@@ -17,7 +32,7 @@ export const List = styled.ul`
   }
 `;
 
-export const Bar = styled.div`
+export const Bar = styled.div<IBarProps>`
   height: 4px;
   background: ${(props) => props.theme.palette.grey[100]};
   width: 150px;
@@ -39,17 +54,18 @@ export const CustomTitle = styled(Text)`
   text-transform: capitalize;
 `;
 
-export const CustomSubTitle = styled(Text)`
+export const CustomSubTitle = styled(Text)<ITitleProps>`
   color: ${(props) => props.theme.palette.success.main};
   font-size: 18px;
 
-  ${(props) => props.white
-    && css`
+  ${(props) =>
+    props.white &&
+    css`
       color: ${props.theme.palette.common.white};
     `}
 `;
 
-export const Left = styled(Grid)`
+export const Left = styled(Grid)<ILeftProps>`
   ${(props) => bg[props.color || 'default']}
   padding:50px 35px;
   text-align: center;
@@ -79,7 +95,7 @@ export const Right = styled(Grid)`
   padding: 50px 35px;
 `;
 
-export const ListAbilities = styled.ul`
+export const ListAbilities = styled.ul<IAbilityProps>`
   margin-top: 25px;
   display: grid;
   grid-gap: 5px;

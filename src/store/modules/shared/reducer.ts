@@ -1,14 +1,17 @@
-/* eslint-disable default-param-last */
 import produce from 'immer';
-import { SharedActionTypes } from './actions';
+import { SharedActionTypes, ISharedAction } from './actions';
 
-export const INITIAL_STATE_SHARED = {
+export interface ISharedState {
+  modal: boolean;
+}
+
+export const INITIAL_STATE_SHARED: ISharedState = {
   modal: false,
 };
 
 export default function sharedReducer(
-  state = INITIAL_STATE_SHARED,
-  action,
+  state: ISharedState = INITIAL_STATE_SHARED,
+  action: ISharedAction,
 ) {
   return produce(state, (draft) => {
     switch (action.type) {
