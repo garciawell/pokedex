@@ -16,9 +16,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 -- [Redux Saga] - O redux-saga é uma biblioteca que tem como objetivo tornar os efeitos colaterais dos aplicativos mais fáceis de gerenciar, mais eficientes de executar, fáceis de testar e melhores em lidar com falhas;
 - [Formik] - O formik é uma biblioteca de gerenciamento de formulário controlados de forma eficiente.
 - [Axios] - O Axios é um cliente HTTP baseado em Promises para Browser e NodeJS;
-- [Typescript] - TypeScript é um superset para adicionar tipagem no JavaScript que visa melhorar o processo de desenvolvimento, melhorando o intelliSense da IDE e prevenindo bugs.
-- [Styled Components] - O Styled Components é uma biblioteca que permite criar escopos de estilização para os componentes;
-- [Storybook] -  Ferramenta para pré-visualização isolada dos componentes, muito útil no processo de desenvolvimento pois não precisamos acessar o local que o componente é renderizado ou até mesmo startar a aplicação.
 - [Immer] - Bilioteca para criação de estados imutáveis com foco em performance.
 
 <hr/>
