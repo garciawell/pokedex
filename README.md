@@ -1,7 +1,7 @@
 
 <br/>
 <h4 align="center">
-<img width="600" src="src/assets/img/screen.png" /><br>
+<img width="600" src="src/assets/img/screen-preview.png" /><br>
 </h4>
 
  <h1 align="center"> Pokédex </h1>
