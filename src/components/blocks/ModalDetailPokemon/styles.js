@@ -1,17 +1,13 @@
-import styled, { css } from 'styled-components';
-import { Text } from 'components/elements';
 import { Grid } from '@material-ui/core';
-import WatermarkLarge from 'assets/img/watermark-pokeball-large.svg';
-import { bgType as bg, IWrapperProps } from '../CardPokemon/styles';
+import styled, { css } from 'styled-components';
+import WatermarkLarge from '../../../assets/img/watermark-pokeball-large.svg';
+import { Text } from '../../elements';
+import { bgType as bg } from '../CardPokemon/styles';
 import { bgType } from '../TypesPokemon/styles';
-
-
 
 export const Container = styled(Grid)`
   height: 100%;
 `;
-
-
 
 export const List = styled.ul`
   margin-top: 35px;
@@ -47,9 +43,8 @@ export const CustomSubTitle = styled(Text)`
   color: ${(props) => props.theme.palette.success.main};
   font-size: 18px;
 
-  ${(props) =>
-    props.white &&
-    css`
+  ${(props) => props.white
+    && css`
       color: ${props.theme.palette.common.white};
     `}
 `;

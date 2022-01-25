@@ -1,13 +1,11 @@
-import React, { useEffect, useCallback } from 'react';
+import { Box, Grid } from '@material-ui/core';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Creators as PokeActions } from 'store/modules/pokemons/actions';
-import { Creators as SharedActions } from 'store/modules/shared/actions';
-import { IState } from 'store/combineReducers';
-import { IPokeModel } from 'store/modules/pokemons/models';
-import { SearchPokemon, ModalDetailPokemon } from 'components/blocks';
-import { Modal } from 'components/elements';
-import CardPokemon from 'components/blocks/CardPokemon';
-import { Grid, Box } from '@material-ui/core';
+import { Creators as SharedActions } from '../../store/modules/shared/actions';
+import { Creators as PokeActions } from '../../store/modules/pokemons/actions';
+import { ModalDetailPokemon, SearchPokemon } from '../../components/blocks';
+import CardPokemon from '../../components/blocks/CardPokemon';
+import { Modal } from '../../components/elements';
 import {
   Box as BoxStyled,
   Container,
@@ -17,7 +15,7 @@ import {
   WrapperBg,
 } from './styles';
 
-const Dashboard= () => {
+function Dashboard() {
   const pokes = useSelector(
     (state) => state.pokemons.pokes,
   );
@@ -104,6 +102,6 @@ const Dashboard= () => {
       </Modal>
     </>
   );
-};
+}
 
 export default Dashboard;

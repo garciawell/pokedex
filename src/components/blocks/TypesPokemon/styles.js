@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import { IPokeTypes } from 'store/modules/pokemons/models';
-import { darken } from 'polished';
 
+import { darken } from 'polished';
 
 export const bgType = {
   grass: css`

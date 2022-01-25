@@ -1,13 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Dashboard } from '../pages';
 
-const Routes  = () => {
+function AppRoutes() {
   return (
-    <Switch>
-      <Route path="/" exact component={Dashboard} />
-    </Switch>
+    <Routes>
+      <Route path="/" exact element={<Dashboard />} />
+    </Routes>
   );
-};
+}
 
-export default Routes;
+export default AppRoutes;

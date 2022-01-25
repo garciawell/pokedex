@@ -1,8 +1,8 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 export function mockListPokemons() {
   return Array.from({ length: 20 }, () => ({
-    id: uuid(),
+    id: uuidv4(),
     name: 'Pokemon',
     url: 'url',
     img: 'img',
@@ -40,8 +40,6 @@ export function padDigits(number) {
 }
 
 export function sumValues(val) {
-  const sumItems = val.reduce((acc, curr) => {
-    return acc + curr;
-  }, 0);
+  const sumItems = val.reduce((acc, curr) => acc + curr, 0);
   return sumItems;
 }

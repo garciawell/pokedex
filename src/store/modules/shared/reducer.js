@@ -1,6 +1,6 @@
+/* eslint-disable default-param-last */
 import produce from 'immer';
 import { SharedActionTypes } from './actions';
-
 
 export const INITIAL_STATE_SHARED = {
   modal: false,
